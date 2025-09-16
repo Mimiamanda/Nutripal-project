@@ -1,0 +1,600 @@
+:root{
+  --brand:#006400;
+  --brand-600:#004d00;
+  --ink:#0f172a;
+  --muted:#6b7280;
+  --surface:#ffffff;
+  --bg:#f7faf8;
+  --ring: rgba(0,100,0,.14);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Arial;
+  background:var(--bg); color:var(--ink);
+}
+
+
+/* Splash launch effect */
+.brand-bg {
+  background: var(--brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  z-index: 9999; /* keep on top */
+}
+
+/* .splash-logo {
+  width: 180px;
+  max-width: 50vw;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: splashIn 2s ease forwards;
+} */
+ .logo {
+      font-family: Arial, sans-serif;
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+       transform: scale(0.8);
+       animation: splashIn 2s ease forwards;
+    }
+    .logo span {
+      color: #3bc98e; /* green for "Pal" */
+      transform: scale(0.8);
+       animation: splashIn 2s ease forwards;
+    }
+    
+
+
+@keyframes splashIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.screen.fade-out {
+  animation: splashOut 0.8s ease forwards;
+}
+
+@keyframes splashOut {
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+
+.circle-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop without stretching */
+  display: block;
+}
+
+
+/* Layout */
+.screen{
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  padding:28px 22px; opacity:0; pointer-events:none; transform:translateX(28px);
+  transition:transform .45s ease, opacity .45s ease;
+}
+.screen.active{opacity:1; pointer-events:auto; transform:translateX(0)}
+.center{align-items:center; justify-content:center; text-align:center}
+.form{gap:14px; align-items:stretch; justify-content:flex-start; padding-top:42px}
+.brand-bg{background:var(--brand)}
+.v-gap{height:8px}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d1d1; /* inactive */
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: var(--brand); /* brand green */
+  transform: scale(1.2);
+}
+
+/* ensure screens leave space for bottom actions */
+.screen { padding-bottom: 92px; } /* leave room for bottom-actions */
+
+/* bottom actions container (fixed to bottom of the section) */
+.bottom-actions {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+}
+
+/* Login link style (light weight link) */
+.loginBtn, .link-btn {
+  background: transparent;
+  border: 0;
+  color: var(--brand);
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Slight visual difference so both buttons don't look identical */
+.signupBtn { /* makes sign-up look like CTA but slightly smaller than main primary */
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 420px) {
+  .bottom-actions { gap: 8px; left: 14px; right: 14px; bottom: 16px; }
+  .loginBtn, .signupBtn { padding: 9px 12px; font-size: 14px; }
+  .screen { padding-bottom: 110px; }
+}
+
+/* Base background for pre-splash and onward screens */
+.pre-bg {
+  background: linear-gradient(180deg, var(--brand) 0%, #ffffff 100%);
+  min-height: 100vh;
+  width: 100%;
+  color: #222; /* text stays visible */
+}
+
+.pre-bg {
+  background: linear-gradient(180deg, var(--brand) 0%, #e8f9ef 50%, #ffffff 100%);
+}
+
+
+
+
+/* Typography */
+.h1{font-size:26px; font-weight:800; margin:14px 0;  color: #003300;        
+  text-align: center;}
+.tiny-title{font-size:16px; color:var(--brand); text-shadow: 0 1px 2px rgba(0,0,0,0.25); font-weight: 700; margin-bottom:10px; letter-spacing:.2px;  text-transform: uppercase;
+  text-align: center;}
+.sub{ color: #444;; margin:10px 0 0; font-size: 17px;  font-weight: 600;  text-align: center;
+  line-height: 1.6;}
+.sub.small{font-size:15px; font-weight: 700; color: #555;}
+
+.signup-footer {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #666;
+}
+
+/* Buttons */
+.btn{
+  appearance:none; border:0; padding:14px 18px; border-radius:16px; font-weight:600;
+  cursor:pointer; transition:transform .06s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:active{transform:translateY(1px)}
+.primary{background:var(--brand); color:#fff; box-shadow:0 10px 24px -12px var(--ring)}
+.primary:hover{background:var(--brand-600)}
+.outline{background:#fff; color:var(--brand); border:1.5px solid #cfe7d7}
+.ghost{background:#ecf7ef; color:var(--brand);}
+
+/* Inputs */
+.input{display:flex; flex-direction:column; gap:8px}
+.input > span{font-size:12px; color:var(--muted)}
+.input > input{
+  border:1.6px solid #e5e7eb; border-radius:14px; padding:14px 14px; font-size:16px; outline:none;
+  background:#fff;
+}
+.input > input:focus{border-color:var(--brand); box-shadow:0 0 0 6px var(--ring)}
+
+/* Splash / Pre-splash imagery */
+.splash-logo{width:64vw; max-width:360px; height:auto; display:block}
+.circle-illustration img{
+  width:160px; height:160px; border-radius:50%; object-fit:cover;
+  box-shadow: 0 14px 30px -18px rgba(0,0,0,.35), 0 0 0 10px #f1fff6;
+}
+
+/* Verify (OTP) boxes — rounded squares */
+.otp{display:flex; gap:14px; margin:16px 0 6px; justify-content:center}
+.otp-input{
+  width:58px; height:64px; text-align:center; font-size:28px; font-weight:700; letter-spacing:.04em;
+  border:2px solid #e5e7eb; border-radius:14px; background:#f9fbf9; outline:none; transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.otp-input:focus{
+  border-color:var(--brand); box-shadow:0 0 0 6px var(--ring); background:#ffffff;
+}
+
+/* verify actions */
+.verify-actions {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  margin:12px 0 8px;
+  flex-wrap:wrap;
+}
+
+/* "Change email" = text-like link */
+.link-btn{
+  background:transparent;
+  border:0;
+  color:var(--brand);
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:underline;
+  padding:6px 8px;
+  border-radius:8px;
+}
+
+/* smaller variant for resend */
+.btn.small{
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:14px;
+}
+
+/* disabled styling for resend */
+#resendBtn[disabled], .btn.small.disabled {
+  opacity:0.62;
+  cursor:not-allowed;
+}
+
+/* optional micro spacing to keep layout tidy on mobile */
+@media (max-width:420px){
+  .otp-input{ width:48px; height:56px; font-size:24px; }
+  .circle-illustration{ width:150px; height:150px; }
+}
+
+
+/* Chips (checkbox goals) */
+.chip-list{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0}
+.chip{display:inline-flex; align-items:center; border:1.5px solid #dfe7e2; border-radius:999px; padding:8px 12px; cursor:pointer; background:#fff}
+.chip input{appearance:none; width:0; height:0; position:absolute}
+.chip span{font-size:14px}
+.chip:has(input:checked){border-color:var(--brand); background:#ecf7ef; box-shadow:0 8px 20px -14px var(--ring)}
+
+/* Cards / images */
+.hero-card{display:flex; flex-direction:column; align-items:center; gap:20px; padding:18px}
+.wide-img{width:88%; max-width:520px; border-radius:20px; box-shadow:0 18px 36px -24px rgba(0,0,0,.35)}
+.checkmark{width:74px; height:74px; line-height:74px; border-radius:50%; background:#e8f7ee; color:var(--brand);
+  font-size:36px; font-weight:900; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px}
+
+/* Helpers */
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.or{margin:8px 0; color:#9aa3a0; font-size:12px; letter-spacing:.14em}
+
+
+/* Meal Frequency Options */
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 300px;
+  margin: 24px auto;
+}
+
+.option-btn {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1.8px solid #cfe7d7;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.option-btn:hover {
+  background: #f1fff6;
+}
+
+.option-btn.active {
+  border-color: var(--brand);
+  background: #ecf7ef;
+  color: var(--brand);
+  box-shadow: 0 6px 20px -12px var(--ring);
+}
+
+/* Disable Next until choice made */
+#mealNext[disabled] {
+  opacity: 0.6;
+    cursor: not-allowed;}
+
+  
+#activityNext[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff; /* or var(--brand) if you want */
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+.card label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.card input, 
+.card select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.block {
+  width: 100%;
+}
+
+.small-text {
+  font-size: 12px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* #dashboard, #workout, #addAlarmScreen, #repeatScreen, #soundScreen {
+  padding: 24px;
+} */
+
+/* ===== Dashboard Layout ===== */
+/* #dashboard {
+  padding: 20px;
+  position: relative;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.circle-illustration img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4caf50;
+} */
+
+/* Stats cards */
+/* .stat-grid {
+  display: flex;
+  gap: 14px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+} */
+
+/* ===== Dashboard Styles ===== */
+#dash-dashboard {
+  display: none;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #f9fdf7;
+  color: #111;
+}
+
+#dash-dashboard.active {
+  display: block;
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dash-greeting {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.dash-profile-pic img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.dash-user-status {
+  margin: 10px 0;
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.dash-summary-title {
+  margin: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dash-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dash-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.dash-circle {
+  border: 6px solid #9fd89c;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dash-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  margin-top: 8px;
+}
+
+.dash-btn.dash-primary {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.dash-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.dash-bottom-nav button {
+  background: none;
+  border: none;
+  font-size: 14px;
+}
+
+.dash-bottom-nav button.active {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+
+/* ===== Workout Setup Styles ===== */
+#dash-workout-setup {
+  display: none;
+  padding: 20px;
+  background: #f9fdf7;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+#dash-workout-setup.active {
+  display: block;
+}
+
+.dash-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dash-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dash-form input[type="text"],
+.dash-form input[type="time"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.dash-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.dash-days label {
+  font-weight: normal;
+}
+
+#workoutForm .dash-btn {
+  margin-top: 20px;
+}
+
+
+
+/* ===== Workout Session ===== */
+#dash-workout-session {
+  display: none;
+  padding: 20px;
+  background: #f9fdf7;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+#dash-workout-session.active {
+  display: block;
+}
+
+.dash-session {
+  margin-top: 30px;
+  text-align: center;
+}

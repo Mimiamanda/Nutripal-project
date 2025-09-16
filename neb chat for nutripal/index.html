@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriPal</title>
+  <link rel="stylesheet" href="css file/style.css" />
+</head>
+<body>
+
+
+<!-- SPLASH: solid green background + transparent logo centered -->
+  <section class="screen active center brand-bg" id="splash" aria-label="Splash">
+    <!-- <img class="splash-logo" alt="NutriPal logo" src="images/nutri pal logo.png" /> -->
+      <div class="logo">Nutri<span>Pal</span></div>
+
+    
+  </section>
+
+  <!-- PRE-SPLASH 1 -->
+  <section class="screen center pre-bg" id="pre1" aria-label="Pre-splash 1">
+    <header class="tiny-title">Welcome to NutriPal</header>
+    <div class="circle-illustration">
+      <img alt="trainer" src="images/fitness pic.jpg"/>
+    </div>
+    <h1 class="h1">"Plan your fitness journey and meal anywhere-home, office, or on the go"</h1>
+    <p class="sub">Build a healthy eating habits with easy to follow recipes and fitness tips</p>
+
+    <!-- Dot indicators -->
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <div class="bottom-actions">
+    <button class="link-btn loginBtn" type="button">Login</button>
+    <button class="btn primary signupBtn" type="button">Sign up</button>
+  </div>
+  </section>
+
+  <!-- PRE-SPLASH 2 -->
+  <section class="screen center pre-bg" id="pre2" aria-label="Pre-splash 2">
+    <header class="tiny-title">Welcome to NutriPal</header>
+    <div class="circle-illustration">
+      <img alt="meal bowls" src="images/meal planning.jpg"/>
+    </div>
+    <h1 class="h1">Personalized meal plans Tailored to your goals and routine.</h1>
+    <p class="sub">"Whether yoy're bulking,cutting or maintaining,NutriPal App creates a perfect menu"</p>
+
+  <div class="dots">
+  <span class="dot"></span>
+  <span class="dot active"></span>
+  <span class="dot"></span>
+</div>
+
+<div class="bottom-actions">
+    <button class="link-btn loginBtn" type="button">Login</button>
+    <button class="btn primary signupBtn" type="button">Sign up</button>
+  </div>
+  </section>
+
+  <!-- PRE-SPLASH 3 -->
+  <section class="screen center pre-bg" id="pre3" aria-label="Pre-splash 3">
+    <header class="tiny-title">Welcome to NutriPal</header>
+    <div class="circle-illustration">
+      <img alt="healthy tips" src="images/last img for welcome screen.jpg"/>
+    </div>
+    <h1 class="h1">Unlock pro-tested recipes Plus science-backed fitness tips.</h1>
+    <p class="sub">All our meals are vetted by certified Dietitians and fitness Coaches.</p>
+  
+
+    <div class="dots">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot active"></span>
+    
+</div>
+<div> <p><button class="btn primary" id="getStartedBtn">Get Started</button></p></div>
+
+  </section>
+
+  
+
+  <!-- Sign Up -->
+<section class="screen center pre-bg" id="signup" aria-label="Sign up">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">Sign up</h1>
+
+  <p class="sub small"><b>Welcome! Let’s customize NutriPal for your goals.</b></p>
+  <div class="v-gap"></div>
+  <button class="btn primary" id="emailStart">Continue with email</button>
+
+  <div class="or"><b>OR</b></div>
+  <button class="btn outline" id="googleStart">Continue with Google</button>
+
+  <p class="sub letter signup-footer">
+    We will collect personal information from and about you and use it for various purposes, including to customize your Nutripal experience.
+  </p>
+</section>
+
+
+<!-- Email Auth (Login) -->
+<section class="screen form" id="emailAuth" aria-label="Email auth">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">Log in to NutriPal</h1>
+
+  <label class="input">
+    <span>Email</span>
+    <input type="email" id="email" placeholder="you@example.com" />
+  </label>
+
+  <label class="input">
+    <span>Password</span>
+    <input type="password" id="password" placeholder="••••••••" />
+  </label>
+
+  <button class="btn primary" id="emailSubmit">Continue</button>
+
+  <!-- Forgot password -->
+  <p class="sub small" style="text-align:left; margin-top:10px;">
+    <a href="#" id="forgotPasswordLink">Forgot password?</a>
+  </p>
+
+  <!-- Footer -->
+  <p class="sub small" style="text-align:center; margin-top:40px;">
+    Don’t have an account? 
+    <a href="#" id="goToSignup">Sign up</a>
+  </p>
+</section>
+
+
+<!-- Forgot Password -->
+<section class="screen form" id="forgotPassword" aria-label="Forgot password">
+  <button class="back-btn" onclick="goTo('emailAuth')" aria-label="Go back">←</button>
+
+  <h1 class="h1">Reset Password</h1>
+  <p class="sub small">Enter your email address and we’ll send you a reset link.</p>
+
+  <label class="input">
+    <span>Email</span>
+    <input type="email" id="resetEmail" placeholder="you@example.com" />
+  </label>
+
+  <button class="btn primary" id="resetSubmit">Send reset link</button>
+</section>
+
+
+  <!-- Verify Email -->
+<section class="screen center pre-bg" id="verify" aria-label="Verify email">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">Verify your email</h1>
+  <p class="sub small">Please enter the 4-digit code sent to your email.</p>
+
+  <!-- Styled OTP boxes (rounded squares) -->
+  <div class="otp" id="otp">
+    <input class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+  </div>
+
+  <!-- NEW: change email + resend actions -->
+  <div class="verify-actions" role="group" aria-label="Verification actions">
+
+    <button id="changeEmailBtn" class="link-btn" type="button">Change email</button>
+    <button id="resendBtn" class="btn ghost small" type="button" disabled aria-live="polite">Resend code (30s)</button>
+  </div>
+
+  <button class="btn primary ghost" id="verifyBtn" aria-label="Confirm code">Confirm</button>
+</section>
+
+
+  <!-- Verified -->
+  <section class="screen center pre-bg" id="verified" aria-label="Verified">
+    <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+    <div class="checkmark">✔</div>
+    <h1 class="h1">Verified!</h1>
+    <p class="sub small">Hurray! You’ve successfully verified the account.</p>
+    <button class="btn primary" id="proceed">Proceed</button>
+  </section>
+
+  <!-- Gender -->
+  <section class="screen center pre-bg" id="gender" aria-label="Gender">
+    <h1 class="h1">What is your gender?</h1>
+    <div class="grid2">
+      <button class="btn outline" data-next="you">Male</button>
+      <button class="btn outline" data-next="you">Female</button>
+    </div>
+  </section>
+
+  <!-- Know You -->
+  <section class="screen form pre-bg" id="you" aria-label="Know you">
+    <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+    <h1 class="h1">Let’s get to know you better</h1>
+    <label class="input">
+      <span>Height (cm)</span>
+      <input type="number" min="0" id="height" placeholder="e.g. 170" />
+    </label>
+    <label class="input">
+      <span>Weight (kg)</span>
+      <input type="number" min="0" id="weight" placeholder="e.g. 65" />
+    </label>
+    <label class="input">
+      <span>Age</span>
+      <input type="number" min="0" id="age" placeholder="e.g. 25" />
+    </label>
+    <button class="btn primary" id="toGoals">Next</button>
+  </section>
+
+  <!-- Goals -->
+  <section class="screen form pre-bg" id="goals" aria-label="Goals">
+    <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+    <h1 class="h1">Which fitness & nutrition goals matter most to you?</h1>
+
+    <div class="chip-list" id="goalList">
+      <label class="chip"><input type="checkbox" value="stay-active"><span>Stay active</span></label>
+      <label class="chip"><input type="checkbox" value="eat-smarter"><span>Eat smarter</span></label>
+      <label class="chip"><input type="checkbox" value="lose-weight"><span>Lose weight</span></label>
+      <label class="chip"><input type="checkbox" value="gain-muscle"><span>Gain muscle</span></label>
+      <label class="chip"><input type="checkbox" value="track-calories"><span>Track calories</span></label>
+      <label class="chip"><input type="checkbox" value="plan-meals"><span>Plan meals</span></label>
+      <label class="chip"><input type="checkbox" value="reduce-stress"><span>Reduce stress</span></label>
+      <label class="chip"><input type="checkbox" value="balance-diet"><span>Plan balanced meals</span></label>
+      <label class="chip"><input type="checkbox" value="build-routine"><span>Build a workout routine</span></label>
+    </div>
+
+    <button class="btn primary" id="goalsNext">Next</button>
+  </section>
+
+  <!-- Meal-planning path -->
+  <section class="screen center pre-bg" id="plannerA" aria-label="Planner A">
+    <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+    <div class="hero-card">
+      <img class="wide-img" src="images/awesome pick image.jpg"/>
+      <h2>Awesome Picks!</h2>
+
+      <h2>Tiny Steps equals major progress</h2>
+      <p>Let’s crush those goals,one smart habit at a time.</p>
+    </div>
+    <button class="btn primary" id="plannerANext">Next</button>
+
+  </section>
+
+  <!-- Meal Frequency Screen -->
+<section class="screen center pre-bg" id="mealFrequency" aria-label="Meal Frequency">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">How often do you plan your meals ahead?</h1>
+
+  <div class="option-list" id="mealOptions">
+    <button class="option-btn" data-value="never">Never</button>
+    <button class="option-btn" data-value="rarely">Rarely</button>
+    <button class="option-btn" data-value="sometimes">Sometimes</button>
+    <button class="option-btn" data-value="often">Often</button>
+    <button class="option-btn" data-value="always">Always</button>
+  </div>
+
+  <button class="btn primary" id="mealNext" disabled>Next</button>
+</section>
+
+<!-- Smart Planner Confirmation -->
+<section class="screen center pre-bg" id="smartPlanner" aria-label="Smart Planner">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <div class="hero-card">
+    <img class="wide-img" alt="meals" src="images/lets started.jpg"/>
+    <h2>Nice work!</h2>
+    <p>You’re a smart planner.</p>
+    <p>We can help make your meal planning easier with ready-made templates and advice, so you’ll always feel in control.</p>
+  </div>
+  <button class="btn primary" id="smartPlannerNext">Next</button>
+</section>
+
+<!-- Non-planner path -->
+  <section class="screen center pre-bg" id="plannerB" aria-label="Planner B">
+    <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+    <h1 class="h1">Need a hand planning your meals each week?</h1>
+    <div class="grid2">
+      <button class="btn outline" id="needHelp">Yes, definitely</button>
+      <button class="btn outline" id="noThanks">No, thanks</button>
+    </div>
+  </section>
+
+    <!-- Activity Level Screen -->
+<section class="screen center pre-bg" id="activityLevel" aria-label="Activity Level">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">How active are you on a typical day?</h1>
+
+  <div class="option-list" id="activityOptions">
+    <button class="option-btn" data-value="sedentary">Sedentary</button>
+    <button class="option-btn" data-value="lightly_active">Lightly Active</button>
+    <button class="option-btn" data-value="active">Active</button>
+    <button class="option-btn" data-value="very_active">Very Active</button>
+    <button class="option-btn" data-value="extremely_active">Extremely Active</button>
+  </div>
+
+  <button class="btn primary" id="activityNext" disabled>Next</button>
+</section>
+
+<!-- Meals per Day -->
+<section class="screen center pre-bg" id="mealsPerDay">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">How many meals do you eat during a work day?</h1>
+  <div class="option-list" id="mealsOptions">
+    <button class="option-btn" data-value="1">1</button>
+    <button class="option-btn" data-value="2">2</button>
+    <button class="option-btn" data-value="3">3</button>
+    <button class="option-btn" data-value="more_than_3">More than 3</button>
+    <button class="option-btn" data-value="varies">It varies</button>
+  </div>
+  <button class="btn primary" id="mealsNext" disabled>Next</button>
+</section>
+
+<!-- Snacking -->
+<section class="screen center pre-bg" id="snacking">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">How often do you snack during work hours?</h1>
+  <div class="option-list" id="snackOptions">
+    <button class="option-btn" data-value="rarely">Rarely</button>
+    <button class="option-btn" data-value="once">Once a day</button>
+    <button class="option-btn" data-value="twothree">2–3 times a day</button>
+    <button class="option-btn" data-value="more">More than 3 times</button>
+    <button class="option-btn" data-value="never">Never</button>
+  </div>
+  <button class="btn primary" id="snackNext" disabled>Next</button>
+</section>
+
+<!-- Good habits -->
+<section class="screen center pre-bg" id="goodHabits">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">Do you find it difficult to maintain consistent eating habits during your day?</h1>
+  <div class="option-list" id="habitOptions">
+    <button class="option-btn" data-value="yes">Yes</button>
+    <button class="option-btn" data-value="no">No</button>
+    <button class="option-btn" data-value="sometimes">Sometimes</button>
+  </div>
+  <button class="btn primary" id="habitNext" disabled>Next</button>
+</section>
+
+<!-- Causes -->
+<section class="screen center pre-bg" id="causes">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">What causes you to skip meals or delay eating?</h1>
+  <div class="option-list" id="causeOptions">
+    <button class="option-btn" data-value="forgetfulness">Forgetfulness</button>
+    <button class="option-btn" data-value="deadlines">Meetings/Deadlines</button>
+    <button class="option-btn" data-value="lack">Lack of meal plan</button>
+    <button class="option-btn" data-value="laziness">Laziness</button>
+    <button class="option-btn" data-value="noskip">I don’t skip meals</button>
+  </div>
+  <button class="btn primary" id="causeNext" disabled>Next</button>
+</section>
+
+<!-- Reminders -->
+<section class="screen center pre-bg" id="reminders">
+  <button class="back-btn" data-back="previousScreenId" aria-label="Go back">←</button>
+
+  <h1 class="h1">Would you like to receive daily reminders?</h1>
+  <div class="grid2">
+    <button class="btn outline" id="reminderYes">Yes</button>
+    <button class="btn outline" id="reminderNo">No</button>
+  </div>
+</section>
+
+<!-- ===== Account Creation (screen 1 of your image) ===== -->
+<section class="screen center" id="accountCreate" aria-label="Create account">
+  <button class="back-btn" data-back="reminders" aria-label="Go back">←</button>
+
+  <div class="card" style="max-width:480px; width:92%;">
+    <h1 class="h1">Create account</h1>
+    <p class="sub">You're almost there! Finish setting up your NutriPal account.</p>
+
+    <div class="v-gap"></div>
+
+    <div class="input">
+      <span>Email</span>
+      <input type="email" id="accountEmail" placeholder="joy@gmail.com" />
+    </div>
+
+    <p class="small-text">I accept NutriPal Terms &amp; Conditions and Privacy Policy</p>
+
+    <div class="bottom-actions">
+      <button class="btn outline" id="acctBackToReminders" data-back="reminders">Back</button>
+      <button class="btn primary" id="acctCreateNext">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Account Created (screen 2 of your image) ===== -->
+<section class="screen center" id="accountCreated" aria-label="Account created">
+  <button class="back-btn" data-back="accountCreate" aria-label="Go back">←</button>
+
+  <div class="card" style="text-align:center; max-width:420px; width:92%;">
+    <div class="checkmark">✓</div>
+    <h1 class="h1">Account Created</h1>
+    <p class="sub">Welcome aboard, Joy.</p>
+
+    <div class="v-gap"></div>
+
+    <div class="bottom-actions">
+      <button class="btn outline" id="acctCreatedBack" data-back="accountCreate">Back</button>
+      <button class="btn primary" id="acctCreatedNext">Next</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== Dashboard Screen ===== -->
+<section class="screen" id="dash-dashboard">
+  <header class="dash-header">
+    <button class="dash-back-btn">←</button>
+    <h2 class="dash-greeting">Good morning, Joy.</h2>
+    <div class="dash-profile-pic">
+      <img src="https://via.placeholder.com/60" alt="Profile"/>
+    </div>
+  </header>
+
+  <div class="dash-user-status">
+    <span class="dash-flame">🔥 6</span>
+    <span class="dash-level">● Level 3</span>
+  </div>
+
+  <h3 class="dash-summary-title">Today’s Summary</h3>
+  <div class="dash-summary-grid">
+    <!-- Activity -->
+    <div class="dash-card">
+      <div class="dash-circle">
+        <p><strong>6,348</strong><br/>1,000 steps</p>
+      </div>
+      <p>400 Cal &nbsp; 32 min</p>
+    </div>
+
+    <!-- Nutrition -->
+    <div class="dash-card">
+      <h4>Nutrition</h4>
+      <p>1,250 / 1,800 Calories</p>
+      <progress value="1250" max="1800"></progress>
+      <p>83g Protein &nbsp; 185g Carbs &nbsp; 40g Fat</p>
+      <button class="dash-btn dash-primary dash-small">Log Meal</button>
+    </div>
+
+    <!-- Weight -->
+    <div class="dash-card">
+      <h4>Weight</h4>
+      <p>Lower body</p>
+      <p>45 mins</p>
+      <button class="dash-btn dash-primary dash-small">Start Workout</button>
+    </div>
+
+    <!-- History -->
+    <div class="dash-card">
+      <h4>172 lb</h4>
+      <p>180 lbs &nbsp; Last entry: May 5</p>
+      <button class="dash-btn dash-primary dash-small">Start History</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="dash-bottom-nav">
+    <button class="active">🏠 Dashboard</button>
+    <button>💪 Workouts</button>
+    <button>🍴 Meals</button>
+    <button>👤 Profile</button>
+  </nav>
+</section>
+
+
+<!-- ===== Workout Setup Screen ===== -->
+<section class="screen" id="dash-workout-setup">
+  <header class="dash-header">
+    <button class="dash-back-btn" id="workoutBack">←</button>
+    <h2>Setup Workout</h2>
+  </header>
+
+  <form class="dash-form" id="workoutForm">
+    <label>
+      Workout Name:
+      <input type="text" id="workoutName" placeholder="e.g. Push-ups" required>
+    </label>
+
+    <label>
+      Reminder Time:
+      <input type="time" id="workoutTime" required>
+    </label>
+
+    <label>
+      Select Days:
+      <div class="dash-days">
+        <label><input type="checkbox" value="Mon"> Mon</label>
+        <label><input type="checkbox" value="Tue"> Tue</label>
+        <label><input type="checkbox" value="Wed"> Wed</label>
+        <label><input type="checkbox" value="Thu"> Thu</label>
+        <label><input type="checkbox" value="Fri"> Fri</label>
+        <label><input type="checkbox" value="Sat"> Sat</label>
+        <label><input type="checkbox" value="Sun"> Sun</label>
+      </div>
+    </label>
+
+    <button type="submit" class="dash-btn dash-primary">Save Workout</button>
+  </form>
+</section>
+
+
+<!-- ===== Workout Session Screen ===== -->
+<section class="screen" id="dash-workout-session">
+  <header class="dash-header">
+    <button class="dash-back-btn" id="sessionBack">←</button>
+    <h2>Workout Session</h2>
+  </header>
+
+  <div class="dash-session">
+    <h3 id="sessionName">Workout</h3>
+    <p id="sessionTime">Scheduled at: --</p>
+    <p id="sessionDays">Days: --</p>
+
+    <button class="dash-btn dash-primary" id="startNowBtn">▶ Start Now</button>
+    <div id="sessionStatus" style="margin-top:20px; font-weight:bold;"></div>
+  </div>
+</section>
+
+
+  <script src="js file/index.js"></script>
+</body>
+</html>
