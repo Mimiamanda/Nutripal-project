@@ -89,7 +89,7 @@ $("#goToSignup").addEventListener("click", (e) => {
 
   function startResendTimer(seconds = RESEND_COOLDOWN){
     if (!resendBtn) return;
-    if (timerId) return; // already running
+    if (timerId) return; 
     resendBtn.disabled = true;
     let remaining = seconds;
     resendBtn.textContent = `Resend code (${remaining}s)`;
@@ -106,11 +106,11 @@ $("#goToSignup").addEventListener("click", (e) => {
     }, 1000);
   }
 
-  // When user clicks resend -> call API (replace alert with fetch in real app)
+  // When user clicks resend 
   if (resendBtn) {
     resendBtn.addEventListener('click', () => {
       // TODO: wire your resend verification endpoint here (fetch/post)
-      // Example: fetch('/api/auth/resend', { method:'POST', body: JSON.stringify({ email }) })
+      
       alert('A new verification code has been sent to your email.'); // demo
       startResendTimer();
     });
@@ -196,7 +196,7 @@ function goTo(id) {
   document.getElementById(current)?.classList.remove("active");
   document.getElementById(id)?.classList.add("active");
   current = id;
-  updateDots(id); // NEW
+  updateDots(id); 
 }
 
 
@@ -285,7 +285,7 @@ $("#smartPlannerNext").addEventListener("click", () => {
 
 // PlannerB answers
 $("#needHelp").addEventListener("click", () => {
-  goTo("activityLevel"); // instead of plannerA
+  goTo("activityLevel"); 
 });
 
 $("#noThanks").addEventListener("click", () => {
@@ -299,7 +299,7 @@ let selectedActivity = null;
 
 activityButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    activityButtons.forEach(b => b.classList.remove("active")); // reset
+    activityButtons.forEach(b => b.classList.remove("active")); 
     btn.classList.add("active");
     selectedActivity = btn.dataset.value;
     activityNextBtn.removeAttribute("disabled");
@@ -309,7 +309,7 @@ activityButtons.forEach(btn => {
 activityNextBtn.addEventListener("click", () => {
   if (selectedActivity) {
     console.log("User activity level:", selectedActivity);
-    // 🔜 Replace with next screen ID in your flow
+    // 🔜 
     goTo("goals"); 
   }
 });
@@ -354,7 +354,7 @@ snackNextBtn.addEventListener("click", () => {
   if (selectedSnack) goTo("goodHabits");
 });
 
-// Good habits → (conditional) next step
+// Good habits  
 const habitButtons = document.querySelectorAll("#habitOptions .option-btn");
 const habitNextBtn = document.getElementById("habitNext");
 let selectedHabit = null;
@@ -376,7 +376,7 @@ habitNextBtn.addEventListener("click", () => {
   }
 });
 
-// Causes → Reminders
+//  Reminders
 const causeButtons = document.querySelectorAll("#causeOptions .option-btn");
 const causeNextBtn = document.getElementById("causeNext");
 let selectedCause = null;
@@ -411,13 +411,13 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ---------- Reminders branching (replace the earlier tiny alerts) ----------
+// ---------- Reminders branching  ----------
 const reminderYesBtn = document.getElementById('reminderYes');
 const reminderNoBtn = document.getElementById('reminderNo');
 if (reminderYesBtn) reminderYesBtn.addEventListener('click', () => goTo('accountCreate'));
 if (reminderNoBtn) reminderNoBtn.addEventListener('click', () => goTo('dashboard'));
 
-// ---------- Account creation flow ----------
+// ---------- Account creation  ----------
 const acctCreateNext = document.getElementById('acctCreateNext');
 if (acctCreateNext) {
   acctCreateNext.addEventListener('click', () => {
@@ -426,7 +426,7 @@ if (acctCreateNext) {
       alert('Please enter a valid email address.');
       return;
     }
-    // Optionally show the email on the next screen or save to localStorage
+    //  shows the email on the next screen or save to localStorage
     const createdTitle = document.querySelector('#accountCreated .sub');
     if (createdTitle) createdTitle.textContent = `Welcome aboard, ${email.split('@')[0]}.`;
     goTo('accountCreated');
@@ -490,12 +490,12 @@ document.querySelectorAll('#workout .option-btn').forEach(btn => {
 function getFirstNameFromEmail(email) {
   if (!email) return 'Joy';
   const local = email.split('@')[0] || email;
-  // pick the first meaningful token (split . _ -)
+  // pick the first meaningful token 
   const first = local.split(/[\._\- ]+/)[0] || local;
   return first.charAt(0).toUpperCase() + first.slice(1);
 }
 
-// ---- save email when account is created (enhance your existing handler) ----
+// ---- save email when account is created  ----
 (function wireAccountCreatedSave() {
   const acctCreateNext = document.getElementById('acctCreateNext');
   if (!acctCreateNext) return;
@@ -508,11 +508,11 @@ function getFirstNameFromEmail(email) {
     }
     // persist for later usage
     localStorage.setItem('userEmail', email);
-    // optional: set a placeholder profile (real app: upload/profile fetch)
+   
     if (!localStorage.getItem('profilePic')) {
       localStorage.setItem('profilePic', 'https://via.placeholder.com/160');
     }
-    // call goTo to move forward (your goTo already exists)
+    
     if (typeof goTo === 'function') {
       goTo('accountCreated');
       // after a tiny delay, navigate into dashboard
@@ -527,60 +527,149 @@ function getFirstNameFromEmail(email) {
 
 
 // Show dashboard when "Next" is clicked
-document.getElementById("acctCreatedNext").addEventListener("click", () => {
-  document.getElementById("accountCreated").classList.remove("active");
-  document.getElementById("dash-dashboard").classList.add("active");
-});
+// document.getElementById("acctCreatedNext").addEventListener("click", () => {
+//   document.getElementById("accountCreated").classList.remove("active");
+//   document.getElementById("dash-dashboard").classList.add("active");
+// });
 
 // Optional: go back to accountCreated if needed
-document.getElementById("acctCreatedBack").addEventListener("click", () => {
-  document.getElementById("dash-dashboard").classList.remove("active");
-  document.getElementById("accountCreated").classList.add("active");
-});
+// document.getElementById("acctCreatedBack").addEventListener("click", () => {
+//   document.getElementById("dash-dashboard").classList.remove("active");
+//   document.getElementById("accountCreated").classList.add("active");
+// });
 
 // Open Workout Setup when Start Workout clicked
-document.querySelectorAll(".dash-card .dash-btn").forEach(btn => {
-  if (btn.textContent.includes("Start Workout")) {
-    btn.addEventListener("click", () => {
-      document.getElementById("dash-dashboard").classList.remove("active");
-      document.getElementById("dash-workout-setup").classList.add("active");
-    });
-  }
-});
+// document.querySelectorAll(".dash-card .dash-btn").forEach(btn => {
+//   if (btn.textContent.includes("Start Workout")) {
+//     btn.addEventListener("click", () => {
+//       document.getElementById("dash-dashboard").classList.remove("active");
+//       document.getElementById("dash-workout-setup").classList.add("active");
+//     });
+//   }
+// });
 
 // Back button to dashboard
-document.getElementById("workoutBack").addEventListener("click", () => {
-  document.getElementById("dash-workout-setup").classList.remove("active");
-  document.getElementById("dash-dashboard").classList.add("active");
+// document.getElementById("workoutBack").addEventListener("click", () => {
+//   document.getElementById("dash-workout-setup").classList.remove("active");
+//   document.getElementById("dash-dashboard").classList.add("active");
+// });
+// Show dashboard when "Next" is clicked
+document.getElementById("acctCreatedNext").addEventListener("click", () => {
+  document.getElementById("accountCreated").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
 });
 
-// Handle workout form submission
-document.getElementById("workoutForm").addEventListener("submit", (e) => {
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const screens = document.querySelectorAll(".screen");
+  const navButtons = document.querySelectorAll(".nav-btn");
+
+  // Function to switch screens
+  function showScreen(screenId) {
+    screens.forEach(s => s.classList.remove("active"));
+    document.getElementById(screenId).classList.add("active");
+
+    navButtons.forEach(btn => btn.classList.remove("active"));
+    document
+      .querySelector(`.nav-btn[data-screen="${screenId}"]`)
+      ?.classList.add("active");
+  }
+
+  // Attach nav button events
+  navButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetScreen = btn.getAttribute("data-screen");
+      showScreen(targetScreen);
+    });
+  });
+
+  // Navigation between screens
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-screen");
+
+    //  hide all screens
+    document.querySelectorAll(".screen").forEach(screen => {
+      screen.style.display = "none";
+    });
+
+    // show selected screen
+    document.getElementById(target).style.display = "block";
+
+    // active nav highlight
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // If streak screen clicked → render streaks
+    if (target === "streak") {
+      renderStreakList();
+    }
+  });
+});
+
+
+  // ✅ Workout → Add Alarm
+  document.getElementById("addAlarmBtn").addEventListener("click", () => {
+    showScreen("addAlarm"); // use same system
+  });
+
+  // ✅ Add Alarm → Save Alarm
+  document.getElementById("saveAlarmBtn").addEventListener("click", () => {
+    alert("Alarm saved!");
+    showScreen("workout"); // go back after saving
+  });
+
+  // Default screen
+  showScreen("dashboard");
+});
+
+
+
+// -------- Navigation --------
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById(btn.dataset.screen).classList.add("active");
+
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+
+// -------- Streak Motivation --------
+const dayMessages = {
+  1: "Day 1: Strong start 💪. Stay committed!",
+  2: "Day 2: Keep pushing, consistency is key 🔥",
+  3: "Day 3: You're doing amazing! Stay focused.",
+  4: "Day 4: Almost halfway there 🚀",
+  5: "Day 5: Stay strong, your body thanks you 🙌",
+  6: "Day 6: One more step to victory 🎉"
+};
+
+document.querySelectorAll(".streak-day").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const day = btn.dataset.day;
+    document.getElementById("dayMessage").textContent = dayMessages[day];
+  });
+});
+
+// -------- Meal Custom Days --------
+const repeatOption = document.getElementById("repeatOption");
+const customDays = document.getElementById("customDays");
+
+repeatOption.addEventListener("change", () => {
+  customDays.style.display = repeatOption.value === "custom" ? "block" : "none";
+});
+
+// -------- Save Meal Plan --------
+document.getElementById("mealForm").addEventListener("submit", e => {
   e.preventDefault();
-
-  const name = document.getElementById("workoutName").value;
-  const time = document.getElementById("workoutTime").value;
-  const days = Array.from(document.querySelectorAll(".dash-days input:checked"))
-                   .map(c => c.value)
-                   .join(", ");
-
-  alert(`Workout Saved!\nName: ${name}\nTime: ${time}\nDays: ${days}`);
-
-  // Optional: Generate Google Calendar link
-  const startDate = new Date();
-  const [hour, minute] = time.split(":");
-  startDate.setHours(hour, minute);
-
-  const endDate = new Date(startDate.getTime() + 30*60000); // default 30 mins
-
-  const formatDate = (date) => {
-    return date.toISOString().replace(/-|:|\.\d+/g, "");
-  };
-
-  const calUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(name)}&dates=${formatDate(startDate)}/${formatDate(endDate)}&details=Workout+Reminder&recur=RRULE:FREQ=WEEKLY`;
-
-  window.open(calUrl, "_blank");
+  alert("Meal saved successfully ✅");
 });
+
+
+
 
 
 

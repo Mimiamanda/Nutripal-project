@@ -25,7 +25,7 @@ body{
   justify-content: center;
   position: absolute;
   inset: 0;
-  z-index: 9999; /* keep on top */
+  z-index: 9999; 
 }
 
 /* .splash-logo {
@@ -34,7 +34,8 @@ body{
   opacity: 0;
   transform: scale(0.8);
   animation: splashIn 2s ease forwards;
-} */
+}  */
+
  .logo {
       font-family: Arial, sans-serif;
       font-size: 48px;
@@ -44,12 +45,12 @@ body{
        animation: splashIn 2s ease forwards;
     }
     .logo span {
-      color: #3bc98e; /* green for "Pal" */
+      
+      color: #3bc98e; 
       transform: scale(0.8);
-       animation: splashIn 2s ease forwards;
+        animation: splashIn 2s ease forwards; 
     }
     
-
 
 @keyframes splashIn {
   to {
@@ -73,7 +74,7 @@ body{
 .circle-illustration img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* crop without stretching */
+  object-fit: cover; 
   display: block;
 }
 
@@ -106,14 +107,14 @@ body{
 }
 
 .dot.active {
-  background: var(--brand); /* brand green */
+  background: var(--brand); 
   transform: scale(1.2);
 }
 
 /* ensure screens leave space for bottom actions */
-.screen { padding-bottom: 92px; } /* leave room for bottom-actions */
+.screen { padding-bottom: 92px; } 
 
-/* bottom actions container (fixed to bottom of the section) */
+/* bottom actions container  */
 .bottom-actions {
   position: absolute;
   left: 22px;
@@ -138,8 +139,8 @@ body{
   text-decoration: none;
 }
 
-/* Slight visual difference so both buttons don't look identical */
-.signupBtn { /* makes sign-up look like CTA but slightly smaller than main primary */
+/* signup */
+.signupBtn { 
   padding: 10px 14px;
   border-radius: 12px;
 }
@@ -156,7 +157,7 @@ body{
   background: linear-gradient(180deg, var(--brand) 0%, #ffffff 100%);
   min-height: 100vh;
   width: 100%;
-  color: #222; /* text stays visible */
+  color: #222;
 }
 
 .pre-bg {
@@ -330,7 +331,7 @@ body{
   font-size: 22px;
   font-weight: bold;
   cursor: pointer;
-  color: #fff; /* or var(--brand) if you want */
+  color: #fff; 
 }
 
 .card {
@@ -420,181 +421,348 @@ body{
   margin-bottom: 6px;
 } */
 
-/* ===== Dashboard Styles ===== */
-#dash-dashboard {
+
+/* Dashboard Layout */
+#dashboard {
+  padding: 1rem;
   display: none;
-  height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  background: #f9fdf7;
-  color: #111;
 }
 
-#dash-dashboard.active {
-  display: block;
-}
-
-.dash-header {
+.dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dash-greeting {
-  flex: 1;
-  margin: 0 10px;
-}
-
-.dash-profile-pic img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-}
-
-.dash-user-status {
-  margin: 10px 0;
-  display: flex;
-  gap: 15px;
-  font-size: 16px;
-}
-
-.dash-summary-title {
-  margin: 15px 0;
-  font-size: 18px;
+.dashboard-header .greeting {
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-.dash-summary-grid {
+.profile-pic img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.summary h2 {
+  margin: 1rem 0;
+}
+
+.cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 1rem;
 }
 
-.dash-card {
+.card {
   background: #fff;
   border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.dash-circle {
-  border: 6px solid #9fd89c;
+.circle {
+  width: 90px;
+  height: 90px;
+  margin: 0.5rem auto;
+  border: 5px solid green;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 10px auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  font-weight: bold;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  padding: 0.8rem;
+  background: #0a6d32;
+  border-radius: 20px;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+}
+.bottom-nav .active {
+  text-decoration: underline;
+}
+
+
+/* Workout Screen */
+#workout {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.alarms {
+  margin: 1rem 0;
+}
+
+.alarm-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  background: #fff;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn.round {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #0a6d32;
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+}
+
+/* Switch button */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 22px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+input:checked + .slider {
+  background-color: #0a6d32;
+}
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* Add Alarm Screen */
+#addAlarm {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form label {
+  font-weight: bold;
+}
+
+.form input, .form select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.nav-btn.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+
+/* ===== Back Button ===== */
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  color: #2e8b57;
+}
+
+/* ===== Streak Section ===== */
+.streak-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.streak-list li {
+  margin: 10px 0;
+}
+
+.streak-day {
+  width: 100%;
+  padding: 12px;
+  background: #3bc98e;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.streak-day:hover {
+  background: #2e8b57;
+}
+
+.day-content {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* ===== Meals Section ===== */
+#mealForm {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+#mealForm label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #2e8b57;
+}
+
+#mealForm input, 
+#mealForm select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#mealForm button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #3bc98e;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#mealForm button:hover {
+  background: #2e8b57;
+}
+
+#customDays {
+  margin-top: 10px;
+}
+
+#customDays label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* ===== Profile Section ===== */
+.profile-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-.dash-btn {
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
+.profile-card h3 {
+  margin: 10px 0;
+  color: #333;
+}
+
+.profile-card p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid #3bc98e;
+}
+
+.btn.small {
+  margin-top: 10px;
+  background: #3bc98e;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
   border: none;
-  margin-top: 8px;
+  cursor: pointer;
 }
 
-.dash-btn.dash-primary {
-  background: #4CAF50;
-  color: #fff;
+.btn.small:hover {
+  background: #2e8b57;
 }
 
-.dash-bottom-nav {
+/* ===== Bottom Navigation ===== */
+.bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background: #fff;
-  border-top: 1px solid #ddd;
+  background: #2e8b57;
   padding: 10px 0;
 }
 
-.dash-bottom-nav button {
+.nav-btn {
   background: none;
   border: none;
+  color: white;
   font-size: 14px;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: color 0.3s;
 }
 
-.dash-bottom-nav button.active {
-  color: #4CAF50;
+.nav-btn.active {
   font-weight: bold;
-}
-
-
-/* ===== Workout Setup Styles ===== */
-#dash-workout-setup {
-  display: none;
-  padding: 20px;
-  background: #f9fdf7;
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-#dash-workout-setup.active {
-  display: block;
-}
-
-.dash-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.dash-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-}
-
-.dash-form input[type="text"],
-.dash-form input[type="time"] {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  margin-top: 6px;
-}
-
-.dash-days {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 6px;
-}
-
-.dash-days label {
-  font-weight: normal;
-}
-
-#workoutForm .dash-btn {
-  margin-top: 20px;
+  border-bottom: 2px solid white;
 }
 
 
 
-/* ===== Workout Session ===== */
-#dash-workout-session {
-  display: none;
-  padding: 20px;
-  background: #f9fdf7;
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-#dash-workout-session.active {
-  display: block;
-}
-
-.dash-session {
-  margin-top: 30px;
-  text-align: center;
-}
